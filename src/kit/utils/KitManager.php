@@ -1,6 +1,6 @@
 <?php
 
-namespace duel\utils;
+namespace kit\utils;
 
 use pocketmine\item\Item;
 use pocketmine\item\enchantment\Enchantment;
