@@ -19,7 +19,7 @@ class HelpSubCommand extends SubCommand
 	  * CreateSubCommand constructor.
 	  * @param KitCommand $command
 	  */
-	public function __construct(DuelCommand $command)
+	public function __construct(KitCommand $command)
 	{
 		$this->command = $command;
 	}
