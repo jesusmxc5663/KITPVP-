@@ -4,7 +4,7 @@ namespace kit\command\subcommand;
 
 use pocketmine\command\CommandSender;
 
-use kit\command\DuelCommand;
+use kit\command\KitCommand;
 use kit\command\SubCommand;
 
 class DeleteSubCommand extends SubCommand
