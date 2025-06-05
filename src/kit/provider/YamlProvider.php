@@ -1,9 +1,9 @@
 <?php
 
-namespace duel\provider;
+namespace kit\provider;
 
 use pocketmine\utils\Config;
-use duel\Loader;
+use kit\Loader;
 
 class YamlProvider implements Provider
 {
@@ -30,10 +30,6 @@ class YamlProvider implements Provider
             @mkdir($folder . 'arenas');
         }
 
-        if (!is_dir($folder . 'stats')) {
-            @mkdir($folder . 'stats');
-        }
-
         $kitsFile = $folder . 'kits.yml';
         if (!is_file($kitsFile)) {
             file_put_contents($kitsFile, yaml_emit([]));
@@ -41,38 +37,10 @@ class YamlProvider implements Provider
         $kitsConfig = new Config($kitsFile, Config::YAML);
         $this->kits = $kitsConfig->getAll();
 
-        $joinFile = $folder . 'join.yml';
-        if (!is_file($joinFile)) {
-            file_put_contents($joinFile, yaml_emit([]));
-        }
-        $joinConfig = new Config($joinFile, Config::YAML);
-        $this->join = $joinConfig->getAll();
-
-        $statsFile = $folder . 'stats.yml';
-        if (!is_file($statsFile)) {
-            file_put_contents($statsFile, yaml_emit([]));
-        }
-        $this->statsConfig = new Config($statsFile, Config::YAML);
-    }
 
     public function getKits()
     {
         return $this->kits;
     }
-
-    public function getJoin()
-    {
-        return $this->join;
-    }
-
-    public function getStats()
-    {
-        return $this->statsConfig->getAll();
-    }
-
-    public function saveStats(array $stats): void
-    {
-        $this->statsConfig->setAll($stats);
-        $this->statsConfig->save();
     }
 }
