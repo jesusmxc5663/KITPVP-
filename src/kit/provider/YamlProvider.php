@@ -9,9 +9,7 @@ class YamlProvider implements Provider
 {
     private $loader;
     private $kits = [];
-    private $join = [];
-    private $statsConfig;
-
+    
     public function __construct(Loader $loader)
     {
         $this->loader = $loader;
