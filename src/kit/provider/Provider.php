@@ -1,6 +1,6 @@
 <?php
 
-namespace duel\provider;
+namespace kit\provider;
 
 interface Provider
 {
