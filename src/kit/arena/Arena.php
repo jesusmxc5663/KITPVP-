@@ -8,7 +8,6 @@ use pocketmine\event\entity\{EntityLevelChangeEvent, EntityDamageEvent, EntityDa
 use pocketmine\level\Position;
 use pocketmine\item\Item;
 use pocketmine\Player;
-use kit\command\subcommand\JoinSubCommand;
 
 use kit\Loader;
 
@@ -75,6 +74,7 @@ class Arena implements Listener, ArenaStats
         $player->removeAllEffects();
 
         $player->getInventory()->setItem(8, Item::get(Item::REDSTONE)->setCustomName('§r§cSair'));
+        $player->getInventory()->setItem(5, Item::get(Item::STONE_SWORD)->setCustomName('§l§bKit Diamont'));
     }
 
     /**
@@ -137,12 +137,10 @@ class Arena implements Listener, ArenaStats
     {
         switch ($this->stat) {
             case self::WAIT:
-                if (count($this->players) >= 2) {
+                if (count($this->players) > 1)
                     $this->time--;
                     foreach ($this->players as $player) {
                         $player->sendTip('§r§aPartida iniciando em: §l§b' . $this->time);
-                        JoinSubCommand::refreshParticles();
-                        JoinSubCommand::checkPlayers();
                     }
                     if ($this->time == 0) {
                         $this->startGame();
@@ -151,8 +149,8 @@ class Arena implements Listener, ArenaStats
                     foreach ($this->players as $player) {
                         $player->sendTip('§r§cAguardando por mais jogadores...');
                     }
-                    if ($this->time != 5) {
-                        $this->time = 5;
+                    if ($this->time != 999) {
+                        $this->time = 999;
                     }
                 }
                 break;
@@ -176,7 +174,7 @@ class Arena implements Listener, ArenaStats
             $this->loader->kitManager->setKit($player, $this->kit);
         }
         $this->stat = self::RUN;
-        $this->time = 60 * 2;
+        $this->time = 60 * 999;
     }
 
     /**
@@ -198,7 +196,7 @@ class Arena implements Listener, ArenaStats
         $this->kit = $this->getRandomKit();
         $this->stat = self::WAIT;
         $this->players = [];
-        $this->time = 5;
+        $this->time = 30;
     }
 
     /**
@@ -230,8 +228,6 @@ class Arena implements Listener, ArenaStats
 
         $this->data['pos1'][3] = $this->loader->getServer()->getLevelByName($this->data['pos1'][3]);
         $this->data['pos2'][3] = $this->loader->getServer()->getLevelByName($this->data['pos2'][3]);
-        JoinSubCommand::refreshParticles();
-        JoinSubCommand::checkPlayers();
 
         $this->kit = $this->getRandomKit();
 
@@ -265,6 +261,9 @@ class Arena implements Listener, ArenaStats
             if ($item->getCustomName() == '§r§cSair') {
                 $this->quit($player, true);
                 return;
+            }
+            if ($item->getCustomName() == '§l§bKit Diamont') {
+                $this->join($player);
             }
         }
     }
