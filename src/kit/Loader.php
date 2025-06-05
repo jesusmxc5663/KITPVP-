@@ -6,11 +6,10 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\scheduler\PluginTask;
 use pocketmine\entity\Entity;
 use kit\provider\YamlProvider;
-use duel\utils\KitManager;
+use kit\utils\KitManager;
 use kit\utils\ArenaManager;
 use kit\arena\EmptyArenaChooser;
-use kit\command\DuelCommand;
-use kit\command\subcommand\JoinSubCommand;
+use kit\command\KitCommand;
 use kit\entity\NPC;
 
 class Loader extends PluginBase {
@@ -34,8 +33,7 @@ class Loader extends PluginBase {
 
 		Entity::registerEntity(NPC::class, true);
 
-		$this->getServer()->getCommandMap()->register('kitpvp:', new DuelCommand($this));
-    $this->getServer()->getCommandMap()->register('kit join:', new JoinCommand($this));
+		$this->getServer()->getCommandMap()->register('kitpvp:', new KitCommand($this));
 
 		$this->getServer()->getScheduler()->scheduleRepeatingTask(new class($this) extends PluginTask {
 
