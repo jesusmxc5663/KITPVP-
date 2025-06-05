@@ -1,11 +1,11 @@
 <?php
 
-namespace duel\utils;
+namespace kit\utils;
 
 use pocketmine\utils\Config;
 
-use duel\arena\Arena;
-use duel\Loader;
+use kit\arena\Arena;
+use kit\Loader;
 
 class ArenaManager
 {
