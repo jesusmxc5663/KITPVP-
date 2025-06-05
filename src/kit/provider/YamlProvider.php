@@ -34,11 +34,11 @@ class YamlProvider implements Provider
         }
         $kitsConfig = new Config($kitsFile, Config::YAML);
         $this->kits = $kitsConfig->getAll();
+    }
 
 
     public function getKits()
     {
         return $this->kits;
-    }
     }
 }
