@@ -1,11 +1,11 @@
 <?php
 
-namespace duel\command\subcommand;
+namespace kit\command\subcommand;
 
 use pocketmine\command\CommandSender;
 
-use duel\command\KitCommand;
-use duel\command\SubCommand;
+use kit\command\KitCommand;
+use kit\command\SubCommand;
 
 class SetSubCommand extends SubCommand
 {
@@ -19,7 +19,7 @@ class SetSubCommand extends SubCommand
 	  * CreateSubCommand constructor.
 	  * @param KitCommand $command
 	  */
-	public function __construct(DuelCommand $command)
+	public function __construct(KitCommand $command)
 	{
 		$this->command = $command;
 	}
