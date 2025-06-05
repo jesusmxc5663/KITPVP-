@@ -23,7 +23,7 @@ class KitCommand extends Command
 	public $data = [];
 	
 	/**
-	  * DuelCommand constructor.
+	  * KitCommand constructor.
 	  */
 	public function __construct(Loader $loader)
 	{

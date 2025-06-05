@@ -1,6 +1,6 @@
 <?php
 
-namespace duel\command;
+namespace kit\command;
 
 use pocketmine\command\CommandSender;
 
