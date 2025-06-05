@@ -34,7 +34,7 @@ class Loader extends PluginBase {
 
 		Entity::registerEntity(NPC::class, true);
 
-		$this->getServer()->getCommandMap()->register('duel:', new DuelCommand($this));
+		$this->getServer()->getCommandMap()->register('kitpvp:', new DuelCommand($this));
     $this->getServer()->getCommandMap()->register('kit join:', new JoinCommand($this));
 
 		$this->getServer()->getScheduler()->scheduleRepeatingTask(new class($this) extends PluginTask {
