@@ -1,25 +1,25 @@
 <?php
 
-namespace duel\command\subcommand;
+namespace kit\command\subcommand;
 
 use pocketmine\command\CommandSender;
 
-use duel\command\DuelCommand;
-use duel\command\SubCommand;
+use kit\command\KitCommand;
+use kit\command\SubCommand;
 
 class CreateSubCommand extends SubCommand
 {
 	
-	const PREFIX = '§r§b[Duel]';
+	const PREFIX = '§r§b[PvP]';
 	
-	/** @var DuelCommand */
+	/** @var KitCommand */
 	private $command;
 	
 	/**
 	  * CreateSubCommand constructor.
-	  * @param DuelCommand $command
+	  * @param KitCommand $command
 	  */
-	public function __construct(DuelCommand $command)
+	public function __construct(KitCommand $command)
 	{
 		$this->command = $command;
 	}
@@ -31,29 +31,29 @@ class CreateSubCommand extends SubCommand
 	public function execute(CommandSender $sender, array $args)
 	{
 		if (count($args) < 2) {
-			 $sender->sendMessage(self::PREFIX.' §r§b/duel criar <nome> §r§fpara criar uma partida.');
+			 $sender->sendMessage(self::PREFIX.' §r§b/kitpvp criar <nome> §r§fpara crear una pelea');
 			 return false;
 		}
 		if (empty($this->command->data[$sender->getName()])) {
-			 $sender->sendMessage(self::PREFIX.' §r§cVocê não está no modo criador!');
+			 $sender->sendMessage(self::PREFIX.' §r§ctu no está modo creador!');
 			 return false;
 		}
 		/** @var array */
 		$data = $this->command->data[$sender->getName()];
 		
 		if (empty($data['lobby']) or empty($data['pos1']) or empty($data['pos2'])) {
-			 $sender->sendMessage(self::PREFIX.' §r§cVocê não setou as localizações!');
+			 $sender->sendMessage(self::PREFIX.' §r§cFalta los spawns');
 			 return false;
 		}
 		$manager = $this->command->loader->arenaManager;
 		
 		if ($manager->existsArena($args[1])) {
-			 $sender->sendMessage(self::PREFIX.' §r§cJá existe uma partida com este nome!');
+			 $sender->sendMessage(self::PREFIX.' §r§cYa hay una partida llamda haci!');
 			 return false;
 		}
 		$manager->createArena(array_merge(['name' => $args[1]], $data));
 		unset($this->command->data[$sender->getName()]);
-		$sender->sendMessage(self::PREFIX.' §r§aPartida '.$args[1].' criada.');
+		$sender->sendMessage(self::PREFIX.' §r§aPartida '.$args[1].' creada.');
 		return true;
 	}
 }
