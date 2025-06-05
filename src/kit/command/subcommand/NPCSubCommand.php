@@ -1,28 +1,28 @@
 <?php
 
-namespace duel\command\subcommand;
+namespace kit\command\subcommand;
 
 use pocketmine\command\CommandSender;
 use pocketmine\nbt\tag\{CompoundTag, DoubleTag, ListTag, FloatTag, IntTag, StringTag};
 use pocketmine\Player;
 
-use duel\command\DuelCommand;
-use duel\command\SubCommand;
-use duel\entity\NPC;
+use kit\command\KitCommand;
+use kit\command\SubCommand;
+use kit\entity\NPC;
 
 class NPCSubCommand extends SubCommand
 {
 	
-	const PREFIX = '§r§b[Duel]';
+	const PREFIX = '§r§b[Npc PvPkit]';
 	
-	/** @var DuelCommand */
+	/** @var KitCommand */
 	private $command;
 	
 	/**
 	  * CreateSubCommand constructor.
-	  * @param DuelCommand $command
+	  * @param KitCommand $command
 	  */
-	public function __construct(DuelCommand $command)
+	public function __construct(KiTCommand $command)
 	{
 		$this->command = $command;
 	}
@@ -43,7 +43,7 @@ class NPCSubCommand extends SubCommand
 		$entity = new NPC($sender->chunk, $this->createNBT($sender));
 		$entity->setNameTagVisible(true);
 		$entity->spawnToAll();
-		$sender->sendMessage(self::PREFIX.' §r§aNPC setado.');
+		$sender->sendMessage(self::PREFIX.' §r§aNPC colocado');
 		return true;
 	}
 }
