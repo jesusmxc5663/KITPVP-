@@ -1,23 +1,23 @@
 <?php
 
-namespace duel\command\subcommand;
+namespace kit\command\subcommand;
 
 use pocketmine\command\CommandSender;
 
-use duel\command\DuelCommand;
-use duel\command\SubCommand;
+use kit\command\DuelCommand;
+use kit\command\SubCommand;
 
 class HelpSubCommand extends SubCommand
 {
 	
-	const PREFIX = '§r§b[Duel]';
+	const PREFIX = '§r§b[Ayuda KitPvP]';
 	
-	/** @var DuelCommand */
+	/** @var KitCommand */
 	private $command;
 	
 	/**
 	  * CreateSubCommand constructor.
-	  * @param DuelCommand $command
+	  * @param KitCommand $command
 	  */
 	public function __construct(DuelCommand $command)
 	{
@@ -31,12 +31,12 @@ class HelpSubCommand extends SubCommand
 	public function execute(CommandSender $sender, array $args)
 	{
 		$sender->sendMessage(implode("\n", [
-		self::PREFIX." §r§fAjuda",
+		self::PREFIX." §r§fAyuda",
 		" ",
-		self::PREFIX." §r§f/duel criar §r§fpara criar uma partida.",
-		self::PREFIX." §r§f/duel deletar §r§fpara deletar uma partida.",
-		self::PREFIX." §r§f/duel setar §r§fpara definir as posições.",
-		self::PREFIX." §r§f/duel npc §r§fpara spawnar o slapper de entrar nas partidas."
+		self::PREFIX." §r§f/kitpvp criar §r§fpara crear una partida.",
+		self::PREFIX." §r§f/kitpvp deletar §r§fpara borrar una partida.",
+		self::PREFIX." §r§f/kitpvp setar §r§fpara definir las posiciones",
+		self::PREFIX." §r§f/kitpvp npc §r§fpara spawnar o slapper para entrar party."
 		]));
 		return true;
 	}
