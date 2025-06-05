@@ -5,10 +5,10 @@ namespace duel\command;
 use pocketmine\command\{Command, CommandSender};
 use pocketmine\Player;
 
-use duel\command\subcommand\{CreateSubCommand, SetSubCommand, DeleteSubCommand, NPCSubCommand, HelpSubCommand, JoinSubCommand};
-use duel\Loader;
+use kit\command\subcommand\{CreateSubCommand, SetSubCommand, DeleteSubCommand, NPCSubCommand, HelpSubCommand};
+use kit\Loader;
 
-class DuelCommand extends Command
+class KitCommand extends Command
 {
 	
 	const PREFIX = '§b[Duel]: ';
@@ -29,7 +29,7 @@ class DuelCommand extends Command
 	{
 		$this->loader = $loader;
 		$this->registerSubCommands();
-		parent::__construct('duel', 'batalhe com um jogador.', null, ['1vs1']);
+		parent::__construct('kitpvp', 'batalla entre todos .', null, ['todos']);
 	}
 	
 	/**
@@ -39,15 +39,15 @@ class DuelCommand extends Command
 	  */
 	public function execute(CommandSender $sender, $commandLabel, array $args)
 	{
-		if (!$sender instanceof Player or !$sender->hasPermission('duel.command'))
+		if (!$sender instanceof Player or !$sender->hasPermission('kit.command'))
 		      return false;
 		
 		if (count($args) < 1) {
-			 $sender->sendMessage(self::PREFIX.' §r§b/'.$commandLabel.' ajuda §r§fpara mais informações.');
+			 $sender->sendMessage(self::PREFIX.' §r§b/'.$commandLabel.' ayuda §r§fPara obtener ayuda Op.');
 			 return false;
 		}
 		if (!isset($this->subCommands[$args[0]])) {
-			  $sender->sendMessage(self::PREFIX.' §r§cO sub comando '.$args[0].' não existe!');
+			  $sender->sendMessage(self::PREFIX.' §r§cO sub comando '.$args[0].' no existe');
 			  return false;
 		}
 		$this->subCommands[$args[0]]->execute($sender, $args);
@@ -60,8 +60,7 @@ class DuelCommand extends Command
 		$this->subCommands['setar'] = new SetSubCommand($this);
 		$this->subCommands['deletar'] = new DeleteSubCommand($this);
 		$this->subCommands['npc'] = new NPCSubCommand($this);
-		$this->subCommands['ajuda'] = new HelpSubCommand($this);
-		$this->subCommands['join'] = new JoinSubCommand($this);
+		$this->subCommands['ayuda'] = new HelpSubCommand($this);
 		
 	}
 }
