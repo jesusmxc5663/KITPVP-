@@ -1,2 +1,4 @@
 name: PvPKit
-main: kit
+main: kit\Loader
+api: 2.0.0
+version: 1
