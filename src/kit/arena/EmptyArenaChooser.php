@@ -1,12 +1,12 @@
 <?php
 
-namespace duel\arena;
+namespace kit\arena;
 
-use duel\Loader;
+use kit\Loader;
 
 /**
  * Class EmptyArenaChooser
- * @package vixikhd\onevsone
+ * @package jesusmxc 
  */
 class EmptyArenaChooser {
 
