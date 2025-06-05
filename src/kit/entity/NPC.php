@@ -1,13 +1,13 @@
 <?php
 
-namespace duel\entity;
+namespace kit\entity;
 
 use pocketmine\event\entity\{EntityDamageEvent, EntityDamageByEntityEvent};
 use pocketmine\network\protocol\AddEntityPacket;
 use pocketmine\entity\Entity;
 use pocketmine\Player;
 
-use duel\Loader;
+use kit\Loader;
 
 class NPC extends Entity {
     
@@ -28,7 +28,7 @@ class NPC extends Entity {
                 $arena = Loader::getInstance()->emptyArenaChooser->getRandomArena();
                 
                 if ($arena == null) {
-                     $damager->sendMessage('§r§eDuel: §r§cNão foi encontrada nenhuma partida disponível!');
+                     $damager->sendMessage('§r§eDuel: §r§cNo hay Arenas disponibles');
                      return;
                 }
                 $arena->join($damager);
@@ -47,7 +47,7 @@ class NPC extends Entity {
     	     $count += count($arena->players);
         }
         $color = $count == 0 ? '§r§c' : '§r§a';
-        return "§r§eDuel §r§7Versão [0.1]\n§r§fJogando: ".$color.$count;
+        return "      §r§cKitPvP§r§7Version [0.1]\n§r§fJugando: ".$color.$count;
     }
     
     /**
