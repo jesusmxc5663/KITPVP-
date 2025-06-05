@@ -1,6 +1,6 @@
 <?php
 
-namespace duel\arena;
+namespace kit\arena;
 
 interface ArenaStats
 {
