@@ -12,7 +12,7 @@ class DeleteSubCommand extends SubCommand
 	
 	const PREFIX = '§r§b[PVP]';
 	
-	/** @var DuelCommand */
+	/** @var KitCommand */
 	private $command;
 	
 	/**
